@@ -6,7 +6,7 @@ using namespace std;
 
 int contador = 0;
 
-void hanoi(int n, char inicio, char aux, char final) { // Complejidad O(2^n)
+void hanoi(int n, char inicio, char aux, char final) { // Complejidad O(3^n)
     contador++;
     if (n == 1) {
         cout << "Mueve diso 1 de " << inicio << " a " << aux << endl;
