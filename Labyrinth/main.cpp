@@ -10,7 +10,10 @@ bool findSolution(int maze[N][N], int solution[N][N], int i, int j);
 void printMaze(int solution[N][N]){
     for (int i = 0; i < N; i++) {   
         for (int j = 0; j < N; j++) {
-            cout << " " << solution[i][j] << " ";
+            if(solution[i][j] == 1)
+                cout << " X ";
+            else
+                cout << " # ";
         }
         cout << endl;
     }
