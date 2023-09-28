@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-const int N = 4; // Declaration of the lenght of the maze
+const int N = 10; // Declaration of the lenght of the maze
 bool findSolution(int maze[N][N], int solution[N][N], int i, int j);
 
 /*
@@ -19,7 +19,7 @@ void printMaze(int solution[N][N]){
             if(solution[i][j] == 1)
                 cout << " X ";
             else
-                cout << " # ";
+                cout << " | ";
         }
         cout << endl;
     }
@@ -33,10 +33,16 @@ it means that there is no solution, if it returns true,
 it means that there is a solution and it prints the path taken.
 */
 bool solutionMaze(int maze[N][N]){
-    int solution[N][N] = { { 0, 0, 0, 0 },
-                           { 0, 0, 0, 0 },
-                           { 0, 0, 0, 0 },
-                           { 0, 0, 0, 0 } };
+    int solution[N][N] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                           { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
 
     if (!findSolution(maze, solution, 0, 0)) {
         cout<<"Can´t find a solution";
@@ -94,10 +100,16 @@ then it calls the function solutionMaze, where a path to solve the
 labyrinth is generated.
 */
 void maze(){
-  int maze[N][N] =   { { 1, 0, 0, 0 },
-                       { 1, 1, 0, 1 },
-                       { 0, 1, 0, 0 },
-                       { 1, 1, 1, 1 } };
+  int maze[N][N] =   { { 1, 0, 1, 0, 0, 1, 1, 0, 0, 0 },
+                       { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 },
+                       { 0, 1, 1, 1, 1, 0, 0, 1, 0, 0 },
+                       { 1, 1, 1, 1, 0, 0, 0, 1, 0, 0 },
+                       { 1, 0, 0, 1, 1, 1, 1, 0, 0, 0 },
+                       { 0, 1, 1, 1, 0, 0, 1, 0, 0, 0 },
+                       { 1, 0, 0, 1, 0, 1, 1, 1, 1, 0 },
+                       { 0, 0, 1, 1, 1, 0, 0, 0, 1, 1 },
+                       { 0, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
+                       { 1, 1, 1, 1, 0, 0, 0, 1, 0, 1 }, };
 
     cout << " Labyrinth: " << endl;
     printMaze(maze);
