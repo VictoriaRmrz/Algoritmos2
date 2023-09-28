@@ -81,14 +81,38 @@ bool findSolution(int maze[N][N], int solution[N][N], int i, int j){
     if is a valid move, mark "1" in the solution matrix.
     */
     if(validMove(maze, i, j)){
+        /*
+        we realize that the first version of the code only solve some labyrinth,
+        to fix this problem, we use some additional condition that we didn´t consider
+        in the firs time. We add the condition that check is the current path is already
+        mark in solution matrix, then mark the position in 1 in the solution matrix.
+        The other two conditions we have to add are the ones, where it checks if the 
+        left path and the up path. In the begginig, we ignore those conditions because
+        we 	thought that it already checks those positions, but it doesn,t.
+        We check the code of https://www.geeksforgeeks.org/rat-in-a-maze/  to find this 
+        missing conditions.
+        */   
+        if(solution[i][j] == 1)
+            return false;
+        solution[i][j] = 1;
         if(findSolution(maze, solution, i + 1, j)){
-            solution[i][j] = 1;
+            return true;
+        }
+        if(findSolution(maze, solution, i - 1, j)){
             return true;
         }
         if(findSolution(maze, solution, i, j + 1)){
-            solution[i][j] = 1;
             return true;
         }
+        if(findSolution(maze, solution, i, j - 1)){
+            return true;
+        }
+        /*
+        if neither of the positions work, here we apply backtracking,
+        to find another path, by marking in 0 in the solution matrix,
+        the position that didn´t work out.
+        */
+        solution[i][j] = 0;
         return false;
     }
     return false;
@@ -101,15 +125,15 @@ labyrinth is generated.
 */
 void maze(){
   int maze[N][N] =   { { 1, 0, 1, 0, 0, 1, 1, 0, 0, 0 },
-                       { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 },
-                       { 0, 1, 1, 1, 1, 0, 0, 1, 0, 0 },
-                       { 1, 1, 1, 1, 0, 0, 0, 1, 0, 0 },
-                       { 1, 0, 0, 1, 1, 1, 1, 0, 0, 0 },
-                       { 0, 1, 1, 1, 0, 0, 1, 0, 0, 0 },
-                       { 1, 0, 0, 1, 0, 1, 1, 1, 1, 0 },
-                       { 0, 0, 1, 1, 1, 0, 0, 0, 1, 1 },
-                       { 0, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
-                       { 1, 1, 1, 1, 0, 0, 0, 1, 0, 1 }, };
+                       { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                       { 0, 1, 1, 0, 0, 1, 1, 1, 0, 0 },
+                       { 1, 1, 1, 1, 0, 1, 0, 1, 1, 0 },
+                       { 1, 0, 0, 1, 1, 1, 0, 0, 1, 0 },
+                       { 0, 1, 1, 1, 0, 0, 0, 1, 1, 0 },
+                       { 0, 0, 0, 1, 0, 0, 0, 1, 0, 0 },
+                       { 0, 0, 0, 1, 1, 0, 0, 1, 1, 0 },
+                       { 0, 1, 1, 0, 0, 1, 1, 1, 1, 0 },
+                       { 1, 1, 0, 0, 0, 0, 0, 0, 1, 1 }, };
 
     cout << " Labyrinth: " << endl;
     printMaze(maze);
