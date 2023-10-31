@@ -134,12 +134,17 @@ void Graph::floydWarshall() {
 }
 
 int main() {
-    int nodes = 4;
+    int nodes = 6;
     Graph G(nodes);
-    G.addEdge(0, 1, 5);
-    G.addEdge(0, 3, 10);
-    G.addEdge(1, 2, 3);
-    G.addEdge(2, 3, 1);
+    G.addEdge(0,1,8);
+    G.addEdge(0,3,7);
+    G.addEdge(1,2,10);
+    G.addEdge(1,4,12);
+    G.addEdge(3,2,14);
+    G.addEdge(3,4,11);
+    G.addEdge(2,5,9);
+    G.addEdge(2,4,6);
+    G.addEdge(4,5,5);
 
     G.printMatrix();
 
