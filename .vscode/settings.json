@@ -63,6 +63,10 @@
         "stack": "cpp",
         "list": "cpp",
         "sstream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "complex": "cpp",
+        "iomanip": "cpp",
+        "set": "cpp",
+        "xtree": "cpp"
     }
 }
