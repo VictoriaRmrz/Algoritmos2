@@ -19,7 +19,7 @@ int changeMoney(vector<int>& coins, int amountToChange){
         while(j <= m && i >= coins[j - 1]){  //iterates through each coin that is smaller than or equal to the current amount.
             //finds the minimun number between  the available coins in a certain position, and the value of the 
             // temp variable, then, update the temp variable with said number
-            temp = min(F[i-coins[j - 1]] + 1, temp);
+            temp = min(F[i-coins[j - 1]] + 1, temp); 
             j++;
         }
         //update the value
