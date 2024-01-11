@@ -24,7 +24,6 @@ int changeMoney(vector<int>& coins, int amountToChange){
         }
         //update the value
         F[i] = temp;
-        cout << temp;
     }
     return F[amountToChange];
 }
